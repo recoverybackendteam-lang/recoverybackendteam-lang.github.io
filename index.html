@@ -822,17 +822,17 @@
           <div><h4>Response Time</h4><p>We typically reply within one business day</p></div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault(); this.querySelector('.form-status').style.display='block';">
+      <form action="https://formspree.io/f/mbdvvlba" method="POST">
         <div class="form-row">
-          <div class="field"><label for="fname">Full Name</label><input id="fname" type="text" required></div>
-          <div class="field"><label for="fcompany">Company</label><input id="fcompany" type="text" required></div>
+          <div class="field"><label for="fname">Full Name</label><input id="fname" name="name" type="text" required></div>
+          <div class="field"><label for="fcompany">Company</label><input id="fcompany" name="company" type="text" required></div>
         </div>
         <div class="form-row">
-          <div class="field"><label for="femail">Email</label><input id="femail" type="email" required></div>
-          <div class="field"><label for="fphone">Phone</label><input id="fphone" type="tel"></div>
+          <div class="field"><label for="femail">Email</label><input id="femail" name="email" type="email" required></div>
+          <div class="field"><label for="fphone">Phone</label><input id="fphone" name="phone" type="tel"></div>
         </div>
         <div class="field"><label for="fplatform">Platform(s) You Use</label>
-          <select id="fplatform">
+          <select id="fplatform" name="platform">
             <option>RDN</option>
             <option>Recovery Connect (RC)</option>
             <option>Clearplan</option>
@@ -843,7 +843,7 @@
             <option>Other / Multiple</option>
           </select>
         </div>
-        <div class="field"><label for="fmsg">What do you need help with?</label><textarea id="fmsg" required></textarea></div>
+        <div class="field"><label for="fmsg">What do you need help with?</label><textarea id="fmsg" name="message" required></textarea></div>
         <button type="submit" class="btn btn-amber" style="justify-content:center;">Request Free Trial</button>
         <p class="form-status" style="display:none; font-size:13.5px; color:var(--green); margin-top:4px;">Thanks — this is a demo form. Connect it to your email or CRM to start receiving requests.</p>
       </form>
