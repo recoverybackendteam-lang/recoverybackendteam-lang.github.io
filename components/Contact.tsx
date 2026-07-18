@@ -19,12 +19,32 @@ import { siteConfig } from "@/lib/data";
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // NOTE: Wire this up to your form handler / email API (e.g. Resend,
-    // Formspree, or a Next.js API route) before going live.
-    setStatus("sent");
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("https://formspree.io/f/mbdvvlba", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      setStatus("sent");
+      form.reset();
+    } else {
+      alert("Failed to send your message. Please try again.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
   }
+}
 
   return (
     <section id="contact" className="relative py-24 sm:py-32">
